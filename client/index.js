@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from "react-dom";
-
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
 //import gql from "graphql-tag";
-
+import App from './components/App';
 import SongList from './components/SongList';
 
 const client = new ApolloClient({});
@@ -13,7 +13,11 @@ const client = new ApolloClient({});
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <SongList />
+      <Router history={hashHistory}>
+        <Route path="/" component={App}>
+          <IndexRoute component={SongList} />
+        </Route>
+      </Router>
     </ApolloProvider>
   )
 };
