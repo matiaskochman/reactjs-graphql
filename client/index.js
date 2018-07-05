@@ -3,20 +3,19 @@ import { render } from "react-dom";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
-import gql from "graphql-tag";
+//import gql from "graphql-tag";
 
-const client = new ApolloClient({
-  uri: `https://w5xlvm3vzz.lp.gql.zone/graphql`
-});
+import SongList from './components/SongList';
+
+const client = new ApolloClient({});
 
 
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <div>Lyrical</div>
+      <SongList />
     </ApolloProvider>
   )
-  return <div>matias</div>
 };
 render(
   <Root />,
