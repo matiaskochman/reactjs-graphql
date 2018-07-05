@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-client';
-import ApolloProvider from  'react-apollo';
+import React from 'react';
+import { render } from "react-dom";
 
-const client = new ApolloClient({});
+import ApolloClient from "apollo-boost";
+import { ApolloProvider, Query } from "react-apollo";
+import gql from "graphql-tag";
 
-/*
+const client = new ApolloClient({
+  uri: `https://w5xlvm3vzz.lp.gql.zone/graphql`
+});
+
+
 const Root = () => {
   return (
     <ApolloProvider client={client}>
@@ -14,20 +18,7 @@ const Root = () => {
   )
   return <div>matias</div>
 };
- */
-/*
-ReactDOM.render(
+render(
   <Root />,
   document.querySelector('#root')
 );
-*/
-export default class Root extends Component {
-  render() {
-      return (
-        <ApolloProvider client={client}>
-          <div>Lyrical</div>
-          <div>Hola pianola</div>
-        </ApolloProvider>
-      );
-  }
-}
