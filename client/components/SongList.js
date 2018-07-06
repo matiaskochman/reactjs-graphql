@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
-//import ApolloClient, { gql } from "apollo-boost";
-//const client = new ApolloClient({});
+import { Link } from 'react-router';
 
 const GET_SONGLIST = gql`
 {
@@ -33,9 +32,17 @@ class SongList extends Component {
         if (error) return <div>Error</div>;
         console.log(data)
         return (
-          <ul className="collection">
-            {this.renderSongs(data)}
-          </ul>
+          <div>
+            <ul className="collection">
+              {this.renderSongs(data)}
+            </ul>
+            <Link
+              to="songs/new"
+              className="btn-floating btn-large red right"
+            >
+              <i className="material-icons">add</i>
+            </Link>
+          </div>
         )
       }}
     </Query>    )
