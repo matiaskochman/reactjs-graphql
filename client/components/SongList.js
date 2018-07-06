@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ApolloProvider, Query } from "react-apollo";
-//import gql from "graphql-tag";
-import ApolloClient, { gql } from "apollo-boost";
-const client = new ApolloClient({});
+import gql from "graphql-tag";
+//import ApolloClient, { gql } from "apollo-boost";
+//const client = new ApolloClient({});
 
 const GET_SONGLIST = gql`
 {
