@@ -54,8 +54,7 @@ class SongCreate extends Component{
         <Mutation
           mutation={ADD_SONG}
           refetchQueries={[{
-            query: fetchSongsQuery,
-            variables: { repoFullName: 'apollographql/apollo-client' },
+            query: fetchSongsQuery
           }]}
         >
           {addSong => (
