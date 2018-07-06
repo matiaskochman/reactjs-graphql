@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from 'react-router';
+import fetchSongsQuery from '../queries/fetchSongsQuery';
 
-const GET_SONGLIST = gql`
-{
-  songs{
-    id
-    title
-  }
-}
-`;
+
 
 class SongList extends Component {
 
@@ -26,7 +20,7 @@ class SongList extends Component {
 
   render(){
     return(
-      <Query query={GET_SONGLIST}>
+      <Query query={fetchSongsQuery}>
       {({ loading, error, data }) => {
         if (loading) return <div>Loading...</div>;
         if (error) return <div>Error</div>;

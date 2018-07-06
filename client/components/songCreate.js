@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import { Link, hashHistory } from 'react-router';
+import fetchSongsQuery from '../queries/fetchSongsQuery';
 
 const ADD_SONG = gql`
   mutation addSong($title: String!) {
@@ -52,14 +53,10 @@ class SongCreate extends Component{
         <h3>Create a new song</h3>
         <Mutation
           mutation={ADD_SONG}
-          update={(cache, { data: { addSong } }) => {
-            const { songs } = cache.readQuery({ query: GET_SONGLIST });
-            console.log('songs: ',songs)
-            cache.writeQuery({
-              query: GET_SONGLIST,
-              data: { songs: songs.concat([addSong]) }
-            });
-          }}
+          refetchQueries={[{
+            query: fetchSongsQuery,
+            variables: { repoFullName: 'apollographql/apollo-client' },
+          }]}
         >
           {addSong => (
             <form onSubmit={e => this.onSubmit(e,addSong)}>
