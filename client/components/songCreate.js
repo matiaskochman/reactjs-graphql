@@ -41,6 +41,8 @@ class SongCreate extends Component{
 
   }
   render(){
+    
+    console.log('render songCreate');
 
     return(
       <div>

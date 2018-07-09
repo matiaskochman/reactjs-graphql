@@ -22,7 +22,7 @@ SongSchema.statics.addLyric = function(id, content) {
       song.lyrics.push(lyric)
       return Promise.all([lyric.save(), song.save()])
         .then(([lyric, song]) => song);
-    });
+    }).catch(er => console.error(error));
 }
 
 SongSchema.statics.findLyrics = function(id) {

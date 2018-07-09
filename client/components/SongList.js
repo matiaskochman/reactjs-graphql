@@ -34,7 +34,9 @@ class SongList extends Component {
         >
           {deleteSong => (
             <li key={song.id} className="collection-item">
-              {song.title}
+              <Link to={`/songs/${song.id}`}>
+                {song.title}
+              </Link>
               <i
                 className="material-icons"
                 onClick={(e) => {
