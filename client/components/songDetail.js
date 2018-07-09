@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Link, hashHistory } from 'react-router';
 import LyricCreate from './LyricCreate';
 import LyricList from './LyricList';
+import fetchSongQuery from '../queries/fetchSongQuery';
 
 const FETCH_SONG = gql`
 query SongQuery($id: ID!){
@@ -24,7 +25,7 @@ class SongDetail extends Component {
     console.log('render songDetail');
     const { id } = this.props.params;
     return(
-      <Query query={FETCH_SONG} variables={{ id }}>
+      <Query query={fetchSongQuery} variables={{ id }}>
       {({ loading, error, data }) => {
         if (loading) return <div>Loading...</div>;
         if (error) return <div>Error</div>;
